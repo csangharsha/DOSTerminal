@@ -49,11 +49,11 @@ public class DirCommand extends DosCommand {
                             // current folder
                             String temp_path = "";
                             temp_path = path.replace(".", "");
-                            if (params[1].startsWith("/")) {
+                            if (params[1].startsWith(System.getProperty("file.separator"))) {
                                 params[1] = params[1].substring(1, params[1].length() - 1);
                             }
                             temp_path = temp_path + params[1];
-                            temp_path = temp_path + "/.";
+                            temp_path = temp_path + System.getProperty("file.separator") + ".";
                             File f = new File(temp_path);
                             if (f.exists() && f.isDirectory()) {
                                 if (params[2].equals("-a")) {
@@ -77,11 +77,11 @@ public class DirCommand extends DosCommand {
                     } else {
                         String temp_path = "";
                         temp_path = path.replace(".", "");
-                        if (params[1].startsWith("/")) {
+                        if (params[1].startsWith(System.getProperty("file.separator"))) {
                             params[1] = params[1].substring(1, params[1].length() - 1);
                         }
                         temp_path = temp_path + params[1];
-                        temp_path = temp_path + "/.";
+                        temp_path = temp_path + System.getProperty("file.separator") + ".";
                         File f = new File(temp_path);
                         if (f.exists() && f.isDirectory()) {
                             getList(temp_path);

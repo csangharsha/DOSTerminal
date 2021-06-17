@@ -10,7 +10,7 @@ public class MDCommand extends DosCommand {
     public String execute(String[] params, String path) {
         if (params.length > 1) {
             String tempPath = path.replace(".", "");
-            tempPath = tempPath + params[1] + "\\";
+            tempPath = tempPath + params[1] + System.getProperty("file.separator");
             File file = new File(tempPath);
             file.mkdir();
         } else {

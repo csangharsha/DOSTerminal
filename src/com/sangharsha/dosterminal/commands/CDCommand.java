@@ -13,7 +13,7 @@ public class CDCommand extends DosCommand {
     public String execute(String[] params, String path) {
         if (params.length > 1 && params.length < 3) {
             if (params[1].equals("..")) {
-                List<String> myList = new ArrayList<>(Arrays.asList(path.split(Pattern.quote("\\"))));
+                List<String> myList = new ArrayList<>(Arrays.asList(path.split(Pattern.quote(System.getProperty("file.separator")))));
 
                 if (new File(path).toPath().getNameCount() != 1) {
                     myList.remove(myList.size() - 2);
@@ -23,7 +23,7 @@ public class CDCommand extends DosCommand {
                         if (s.equals(myList.get(myList.size() - 1))) {
                             listString += s;
                         } else {
-                            listString += s + "\\";
+                            listString += s + System.getProperty("file.separator");
                         }
 
                     }
@@ -32,7 +32,7 @@ public class CDCommand extends DosCommand {
             } else {
                 String temp_path;
                 temp_path = path.replace(".", "");
-                temp_path = temp_path + params[1] + "\\.";
+                temp_path = temp_path + params[1] + System.getProperty("file.separator") + ".";
                 File f = new File(temp_path);
                 if (f.exists() && f.isDirectory()) {
                     path = path.replace(".", "");
